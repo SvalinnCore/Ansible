@@ -1,0 +1,22 @@
+all:
+  children:
+    winsrv:
+      hosts:
+        dc1:
+          ansible_host: 10.2.1.1
+        dc2:
+          ansible_host: 10.2.1.1
+    wincli:
+      hosts:
+        vie-it-cli1:
+          ansible_host: 10.0.4.1
+        vie-it-cli2:
+          ansible_host: 10.0.4.2
+        vie-it-cli3:
+          ansible_host: 10.0.4.4
+        vie-it-cli4:
+          ansible_host: 10.0.4.3
+        vie-it-cli5:
+          ansible_host: 10.0.4.7
+        vie-it-cli6:
+          ansible_host: 10.0.4.5
