@@ -1,0 +1,35 @@
+---
+  - name: Grundkonfiguration vie-it-cli2
+    hosts: vie-it-cli2
+    gather_facts: no
+    tasks:
+
+      - name: Set Hostname
+        ansible.windows.win_hostname:
+          name: vie-it-cli2
+
+      - name: Set Interface Name
+        ansible.windows.win_shell: |
+          Get-NetAdapter Ethernet0 | Rename-NetAdapter -NewName "VIE_IT_CLI"
+      
+      - name: Set DNS
+        ansible.windows.win_shell: |
+          Set-DnsClientServerAddress -InterfaceAlias "VIE_IT_CLI" -ServerAddresses ("10.2.1.1")
+
+      - name: Set Timezone
+        ansible.windows.win_shell: |
+          Set-TimeZone -Id "W. Europe Standard Time"
+
+      - name: Set Timezone
+        ansible.windows.win_shell: |
+          Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-In" -Enabled True
+          Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-Out" -Enabled True
+      
+      - name: Enable PS-Remoting
+        ansible.windows.win_shell: |
+          Enable-PSRemoting -Force
+
+      - name: Neustart durchführen
+        win_reboot:
+          reboot_timeout: 600
+          test_command: hostname
