@@ -5,7 +5,7 @@ all:
         dc1:
           ansible_host: 10.2.1.1
         dc2:
-          ansible_host: 10.2.1.1
+          ansible_host: 10.2.1.2
     wincli:
       hosts:
         vie-it-cli1:
