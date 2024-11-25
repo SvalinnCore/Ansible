@@ -13,10 +13,10 @@
     - name: Promote Domain Controller
       win_shell: |
         Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath C:\Windows\NTDS `
-          -DomainMode WinThreshold -DomainName 5CN.corp.at -DomainNetbiosName 5CN `
+          -DomainMode WinThreshold -DomainName SVAL.at -DomainNetbiosName SVAL `
           -ForestMode WinThreshold -InstallDns:$true -LogPath C:\Windows\NTDS `
           -NoRebootOnCompletion:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "Supergeheim123!" -AsPlainText -Force) `
-          -SysvolPath C:\Windows\SYSVOL -Force:$true
+          -SysvolPath C:\Windows\SYSVOL -Force:$trueRe
     
     - name: Reboot
       win_reboot:
