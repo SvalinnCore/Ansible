@@ -1,0 +1,40 @@
+---
+  - name: Promote to Domain Controller
+    hosts: dc1
+    become: yes
+  
+    tasks:
+      - name: Install Active Directory Domain Services and DNS Server roles
+        win_feature:
+          name: 
+            - AD-Domain-Services
+            - DNS
+          state: present
+
+      - name: Promote the server as a Domain Controller
+        win_dsc:
+          resource_name: xADDomain
+          Name: "SVAL.at"
+          DomainNetbiosName: "SVAL"
+          InstallDns: true
+          DomainAdministratorCredential:
+            user: "Administrator"
+            password: "Supergeheim123!"
+          SafeModeAdministratorPassword:
+            user: "SafeModeAdmin"
+            password: "Supergeheim123!"
+          DatabasePath: "C:\\Windows\\NTDS"
+          LogPath: "C:\\Windows\\NTDS"
+          SysvolPath: "C:\\Windows\\SYSVOL"
+
+      - name: Reboot server to finalize Domain Controller promotion
+        win_reboot:
+          reboot_timeout_sec: 600
+
+      - name: Verify domain controller status
+        win_shell: Get-ADDomainController -Filter *
+        register: dc_status
+
+      - name: Display Domain Controller Status
+        debug:
+          var: dc_status.stdout
