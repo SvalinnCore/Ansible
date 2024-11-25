@@ -25,3 +25,12 @@
 
 - name: Initial configuration for VIE-Sales-CLI3
   import_playbook: vie-sales-cli3/initial_config.yml
+
+- name: Initial configuration for VIE-HR-CLI1
+  import_playbook: vie-hr-cli1/initial_config.yml
+
+- name: Initial configuration for VIE-HR-CLI2
+  import_playbook: vie-hr-cli2/initial_config.yml
+
+- name: Initial configuration for VIE-HR-CLI3
+  import_playbook: vie-hr-cli3/initial_config.yml
