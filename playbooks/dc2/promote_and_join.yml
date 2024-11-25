@@ -4,10 +4,15 @@
     gather_facts: no
     tasks:
 
-      - name: Install Active Directory Domain Services and DNS Server roles
+      - name: Install Active Directory Domain Services
         win_feature:
-          name: 
+          name:
             - AD-Domain-Services
+          state: present
+
+      - name: Install DNS Server
+        win_feature:
+          name:
             - DNS
           state: present
 
@@ -21,8 +26,8 @@
           sysvol_path: C:\Windows\SYSVOL
           database_path: C:\Windows\NTDS
           domain_log_path: C:\Windows\NTDS
-        register: dc_promotion
-
-      - name: Reboot after promotion
-        ansible.windows.win_reboot:
-        when: dc_promotion.reboot_required
+      
+      - name: Reboot
+        win_reboot:
+          reboot_timeout: 600
+          test_command: hostname

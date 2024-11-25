@@ -4,10 +4,15 @@
     gather_facts: no
     tasks:
 
-      - name: Install Active Directory Domain Services and DNS Server roles
+      - name: Install Active Directory Domain Services
         win_feature:
-          name: 
+          name:
             - AD-Domain-Services
+          state: present
+
+      - name: Install DNS Server
+        win_feature:
+          name:
             - DNS
           state: present
 
