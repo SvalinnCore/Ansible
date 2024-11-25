@@ -1,10 +1,4 @@
 ---
-- name: Initial configuration for DC1
-  import_playbook: dc1/initial_config.yml
-
-- name: Initial configuration for DC2
-  import_playbook: dc2/initial_config.yml
-
 - name: Initial configuration for VIE-IT-CLI1
   import_playbook: vie-it-cli1/initial_config.yml
 
