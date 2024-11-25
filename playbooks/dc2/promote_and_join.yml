@@ -1,0 +1,28 @@
+---
+  - name: Promote to Domain Controller and Join Domain
+    hosts: dc2
+    gather_facts: no
+    tasks:
+
+      - name: Install Active Directory Domain Services and DNS Server roles
+        win_feature:
+          name: 
+            - AD-Domain-Services
+            - DNS
+          state: present
+
+      - name: Promote Domain Controller
+        win_shell: |
+          Install-ADDSDomainController -DomainName "5CN.corp.at" -Sitename Default-First-Site-Name  `
+            -Credential (Get-Credential "5CN\Administrator")  `
+            -SafeModeAdministratorPassword (ConvertTo-SecureString "Supergeheim123!" -AsPlainText -Force) `
+            -Confirm:$false
+      
+      - name: Reboot
+        win_reboot:
+          reboot_timeout: 600
+          test_command: hostname
+
+      - name: Set DNS
+          ansible.windows.win_shell: |
+            Set-DnsClientServerAddress -InterfaceAlias "VIE_InfraSrv" -ServerAddresses ("10.2.1.2", "10.2.1.1")

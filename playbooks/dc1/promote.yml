@@ -1,24 +1,25 @@
 ---
-- name: Promote to Domain Controller
-  hosts: dc1
-  gather_facts: no
-  tasks:
-    - name: Install Active Directory Domain Services and DNS Server roles
-      win_feature:
-        name: 
-          - AD-Domain-Services
-          - DNS
-        state: present
+  - name: Promote to Domain Controller
+    hosts: dc1
+    gather_facts: no
+    tasks:
 
-    - name: Promote Domain Controller
-      win_shell: |
-        Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath C:\Windows\NTDS `
-          -DomainMode WinThreshold -DomainName SVAL.at -DomainNetbiosName SVAL `
-          -ForestMode WinThreshold -InstallDns:$true -LogPath C:\Windows\NTDS `
-          -NoRebootOnCompletion:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "Supergeheim123!" -AsPlainText -Force) `
-          -SysvolPath C:\Windows\SYSVOL -Force:$trueRe
-    
-    - name: Reboot
-      win_reboot:
-        reboot_timeout: 600
-        test_command: hostname
+      - name: Install Active Directory Domain Services and DNS Server roles
+        win_feature:
+          name: 
+            - AD-Domain-Services
+            - DNS
+          state: present
+
+      - name: Promote Domain Controller
+        win_shell: |
+          Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath C:\Windows\NTDS `
+            -DomainMode WinThreshold -DomainName SVAL.at -DomainNetbiosName SVAL `
+            -ForestMode WinThreshold -InstallDns:$true -LogPath C:\Windows\NTDS `
+            -NoRebootOnCompletion:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "Supergeheim123!" -AsPlainText -Force) `
+            -SysvolPath C:\Windows\SYSVOL -Force:$trueRe
+      
+      - name: Reboot
+        win_reboot:
+          reboot_timeout: 600
+          test_command: hostname
