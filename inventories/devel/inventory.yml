@@ -13,13 +13,13 @@ all:
         vie-it-cli2:
           ansible_host: 10.0.4.2
         vie-it-cli3:
-          ansible_host: 10.0.4.4
-        vie-it-cli4:
           ansible_host: 10.0.4.3
+        vie-it-cli4:
+          ansible_host: 10.0.4.4
         vie-it-cli5:
-          ansible_host: 10.0.4.7
-        vie-it-cli6:
           ansible_host: 10.0.4.5
+        vie-it-cli6:
+          ansible_host: 10.0.4.6
         vie-sales-cli1:
           ansible_host: 10.0.1.1
         vie-sales-cli2:

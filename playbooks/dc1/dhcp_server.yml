@@ -50,9 +50,9 @@
 
       - name: Add static leases for SVAL_VIE-Sales-CLI
         win_shell: |
-          Add-DhcpServerv4Reservation -ScopeId 10.0.1.0 -IPAddress 10.0.1.1 -ClientId "00-50-56-bc-30-e6" -Description "SVAL_VIE-Sales-CLI1"
-          Add-DhcpServerv4Reservation -ScopeId 10.0.1.0 -IPAddress 10.0.1.2 -ClientId "00-50-56-bc-cd-e1" -Description "SVAL_VIE-Sales-CLI2"
-          Add-DhcpServerv4Reservation -ScopeId 10.0.1.0 -IPAddress 10.0.1.3 -ClientId "00-50-56-bc-25-cf" -Description "SVAL_VIE-Sales-CLI3"
+          Add-DhcpServerv4Reservation -ScopeId 10.0.1.0 -IPAddress 10.0.1.1 -ClientId "00-50-56-bc-cc-bb" -Description "SVAL_VIE-Sales-CLI1"
+          Add-DhcpServerv4Reservation -ScopeId 10.0.1.0 -IPAddress 10.0.1.2 -ClientId "00-50-56-bc-d6-a7" -Description "SVAL_VIE-Sales-CLI2"
+          Add-DhcpServerv4Reservation -ScopeId 10.0.1.0 -IPAddress 10.0.1.3 -ClientId "00-50-56-bc-74-fe" -Description "SVAL_VIE-Sales-CLI3"
       
       - name: Add DHCP Scope for SVAL_VIE-HR-CLI
         win_shell: |
@@ -68,24 +68,24 @@
 
       - name: Add static leases for SVAL_VIE-HR-CLI
         win_shell: |
-          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.1 -ClientId "00-50-56-bc-e5-8e" -Description "SVAL_VIE-HR-CLI1"
-          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.2 -ClientId "00-50-56-bc-3c-eb" -Description "SVAL_VIE-HR-CLI2"
-          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.3 -ClientId "00-50-56-bc-ee-27" -Description "SVAL_VIE-HR-CLI3"
+          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.1 -ClientId "00-50-56-bc-ec-82" -Description "SVAL_VIE-HR-CLI1"
+          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.2 -ClientId "00-50-56-bc-e4-75" -Description "SVAL_VIE-HR-CLI2"
+          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.3 -ClientId "00-50-56-bc-08-f2" -Description "SVAL_VIE-HR-CLI3"
 
       - name: Add DHCP Scope for SVAL_LNZ-DEV-CLI
         win_shell: |
-          Add-DhcpServerv4Scope -Name "SVAL_LNZ-DEV-CLI" -StartRange 10.1.0.1 -EndRange 10.1.0.254 -SubnetMask 255.255.0.0 -LeaseDuration 02:00:00 -State Active
+          Add-DhcpServerv4Scope -Name "SVAL_LNZ-DEV-CLI" -StartRange 10.1.0.1 -EndRange 10.1.255.254 -SubnetMask 255.255.0.0 -LeaseDuration 02:00:00 -State Active
 
       - name: Configure DHCP Options for SVAL_LNZ-DEV-CLI
         win_shell: |
-          Set-DhcpServerv4OptionValue -ScopeId 10.1.0.0 -DnsServer 10.2.1.1 -Router 10.1.0.254
+          Set-DhcpServerv4OptionValue -ScopeId 10.1.0.0 -DnsServer 10.2.1.1 -Router 10.1.255.254
 
       - name: Add exclusion range for Gateway for SVAL_LNZ-DEV-CLI
         win_shell: |
-          Add-DhcpServerv4ExclusionRange -ScopeId 10.1.0.0 -StartRange 10.1.0.254 -EndRange 10.1.0.254
+          Add-DhcpServerv4ExclusionRange -ScopeId 10.1.0.0 -StartRange 10.1.255.254 -EndRange 10.1.255.254
 
       - name: Add static leases for SVAL_LNZ-DEV-CLI
         win_shell: |
-          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.1 -ClientId "00-50-56-bc-a2-3a" -Description "SVAL_LNZ-DEV-CLI1"
-          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.2 -ClientId "00-50-56-bc-27-70" -Description "SVAL_LNZ-DEV-CLI2"
-          Add-DhcpServerv4Reservation -ScopeId 10.0.2.0 -IPAddress 10.0.2.3 -ClientId "00-50-56-bc-44-ae" -Description "SVAL_LNZ-DEV-CLI3"
+          Add-DhcpServerv4Reservation -ScopeId 10.1.0.0 -IPAddress 10.1.0.1 -ClientId "00-50-56-bc-72-d2" -Description "SVAL_LNZ-DEV-CLI1"
+          Add-DhcpServerv4Reservation -ScopeId 10.1.0.0 -IPAddress 10.1.0.2 -ClientId "00-50-56-bc-c0-41" -Description "SVAL_LNZ-DEV-CLI2"
+          Add-DhcpServerv4Reservation -ScopeId 10.1.0.0 -IPAddress 10.1.0.3 -ClientId "00-50-56-bc-2e-80" -Description "SVAL_LNZ-DEV-CLI3"
