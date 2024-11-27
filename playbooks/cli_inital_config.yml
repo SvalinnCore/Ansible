@@ -1,4 +1,3 @@
----
   - name: Initial configuration for VIE-IT-CLI1
     import_playbook: vie-it-cli1/initial_config.yml
 
@@ -34,4 +33,3 @@
 
   - name: Initial configuration for VIE-HR-CLI3
     import_playbook: vie-hr-cli3/initial_config.yml
----

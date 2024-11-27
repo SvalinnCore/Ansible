@@ -1,46 +1,44 @@
----
-  - name: Promote to Domain Controller and Join Domain
-    hosts: dc2
-    gather_facts: no
-    tasks:
+- name: Promote to Domain Controller and Join Domain
+  hosts: dc2
+  gather_facts: no
+  tasks:
 
-      - name: Install Active Directory Domain Services
-        win_feature:
-          name:
-            - AD-Domain-Services
-          state: present
-
-      - name: Install DNS Server
-        win_feature:
-          name:
-            - DNS
-          state: present
-
-      - name: Install RSAT for Active Directory
+    - name: Install Active Directory Domain Services
       win_feature:
         name:
-          - RSAT-AD-AdminCenter
+          - AD-Domain-Services
         state: present
 
-      - name: Install RSAT for DNS
+    - name: Install DNS Server
       win_feature:
         name:
-          - RSAT-DNS-Server
+          - DNS
         state: present
 
-      - name: Promote server to Domain Controller and Join
-        microsoft.ad.domain_controller:
-          dns_domain_name: SVAL.at
-          domain_admin_user: SVAL\Administrator
-          domain_admin_password: Supergeheim123!
-          safe_mode_password: Supergeheim123!
-          state: domain_controller
-          sysvol_path: C:\Windows\SYSVOL
-          database_path: C:\Windows\NTDS
-          domain_log_path: C:\Windows\NTDS
-      
-      - name: Reboot
-        win_reboot:
-          reboot_timeout: 600
-          test_command: hostname
----
+    - name: Install RSAT for Active Directory
+    win_feature:
+      name:
+        - RSAT-AD-AdminCenter
+      state: present
+
+    - name: Install RSAT for DNS
+    win_feature:
+      name:
+        - RSAT-DNS-Server
+      state: present
+
+    - name: Promote server to Domain Controller and Join
+      microsoft.ad.domain_controller:
+        dns_domain_name: SVAL.at
+        domain_admin_user: SVAL\Administrator
+        domain_admin_password: Supergeheim123!
+        safe_mode_password: Supergeheim123!
+        state: domain_controller
+        sysvol_path: C:\Windows\SYSVOL
+        database_path: C:\Windows\NTDS
+        domain_log_path: C:\Windows\NTDS
+    
+    - name: Reboot
+      win_reboot:
+        reboot_timeout: 600
+        test_command: hostname

@@ -1,18 +1,16 @@
----
-  - name: join client to domain
-    hosts: vie-hr-cli3
-    gather_facts: false
-    tasks:
+- name: join client to domain
+  hosts: vie-hr-cli3
+  gather_facts: false
+  tasks:
 
-      - name: domain join
-        ansible.windows.win_domain_membership:
-          dns_domain_name: SVAL.at
-          domain_admin_user: Administrator@SVAL.at
-          domain_admin_password: Supergeheim123!
-          state: domain
-        register: domain_state
+    - name: domain join
+      ansible.windows.win_domain_membership:
+        dns_domain_name: SVAL.at
+        domain_admin_user: Administrator@SVAL.at
+        domain_admin_password: Supergeheim123!
+        state: domain
+      register: domain_state
 
-      - name: Reboot host after domain join
-        ansible.windows.win_reboot:
-        when: domain_state.reboot_required
----
+    - name: Reboot host after domain join
+      ansible.windows.win_reboot:
+      when: domain_state.reboot_required
