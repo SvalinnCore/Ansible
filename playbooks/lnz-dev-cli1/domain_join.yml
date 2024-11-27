@@ -1,0 +1,12 @@
+- name: join client to domain
+  hosts: lnz-dev-cli1
+  gather_facts: false
+  tasks:
+
+    - name: join host to SVAL.at with automatic reboot
+      microsoft.ad.membership:
+        dns_domain_name: SVAL.at
+        domain_admin_user: Administrator@SVAL.at
+        domain_admin_password: Supergeheim123!
+        state: domain
+        reboot: true
