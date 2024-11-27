@@ -1,0 +1,36 @@
+---
+- name: Domain join for VIE-IT-CLI1
+  import_playbook: vie-it-cli1/domain_join.yml
+
+- name: Domain join for VIE-IT-CLI2
+  import_playbook: vie-it-cli2/domain_join.yml
+
+- name: Domain join for VIE-IT-CLI3
+  import_playbook: vie-it-cli3/domain_join.yml
+
+- name: Domain join for VIE-IT-CLI4
+  import_playbook: vie-it-cli4/domain_join.yml
+
+- name: Domain join for VIE-IT-CLI5
+  import_playbook: vie-it-cli5/domain_join.yml
+
+- name: Domain join for VIE-IT-CLI6
+  import_playbook: vie-it-cli6/domain_join.yml
+
+- name: Domain join for VIE-Sales-CLI1
+  import_playbook: vie-sales-cli1/domain_join.yml
+
+- name: Domain join for VIE-Sales-CLI2
+  import_playbook: vie-sales-cli2/domain_join.yml
+
+- name: Domain join for VIE-Sales-CLI3
+  import_playbook: vie-sales-cli3/domain_join.yml
+
+- name: Domain join for VIE-HR-CLI1
+  import_playbook: vie-hr-cli1/domain_join.yml
+
+- name: Domain join for VIE-HR-CLI2
+  import_playbook: vie-hr-cli2/domain_join.yml
+
+- name: Domain join for VIE-HR-CLI3
+  import_playbook: vie-hr-cli3/domain_join.yml
