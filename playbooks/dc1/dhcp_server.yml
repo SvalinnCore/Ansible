@@ -95,3 +95,4 @@
           Add-DhcpServerv4Reservation -ScopeId 10.1.0.0 -IPAddress 10.1.0.1 -ClientId "00-50-56-bc-72-d2" -Description "SVAL_LNZ-DEV-CLI1"
           Add-DhcpServerv4Reservation -ScopeId 10.1.0.0 -IPAddress 10.1.0.2 -ClientId "00-50-56-bc-c0-41" -Description "SVAL_LNZ-DEV-CLI2"
           Add-DhcpServerv4Reservation -ScopeId 10.1.0.0 -IPAddress 10.1.0.3 -ClientId "00-50-56-bc-2e-80" -Description "SVAL_LNZ-DEV-CLI3"
+---

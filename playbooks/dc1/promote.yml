@@ -40,3 +40,4 @@
         win_reboot:
           reboot_timeout: 600
           test_command: hostname
+---
