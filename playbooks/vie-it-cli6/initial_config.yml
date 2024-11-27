@@ -1,12 +1,12 @@
 ---
-  - name: Grundkonfiguration vie-it-cli5
-    hosts: vie-it-cli5
+  - name: Grundkonfiguration vie-it-cli6
+    hosts: vie-it-cli6
     gather_facts: no
     tasks:
 
       - name: Set Hostname
         ansible.windows.win_hostname:
-          name: vie-it-cli5
+          name: vie-it-cli6
 
       - name: Set Interface Name
         ansible.windows.win_shell: |
@@ -30,6 +30,4 @@
           Enable-PSRemoting -Force
 
       - name: Reboot
-        win_reboot:
-          reboot_timeout: 600
-          test_command: hostname
+        ansible.windows.win_reboot:

@@ -30,6 +30,4 @@
           Enable-PSRemoting -Force
 
       - name: Reboot
-        win_reboot:
-          reboot_timeout: 600
-          test_command: hostname
+        ansible.windows.win_reboot:
