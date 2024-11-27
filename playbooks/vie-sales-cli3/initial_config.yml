@@ -1,11 +1,11 @@
-- name: Grundkonfiguration vie-sales-cli2
-  hosts: vie-sales-cli2
+- name: Grundkonfiguration vie-sales-cli3
+  hosts: vie-sales-cli3
   gather_facts: no
   tasks:
 
     - name: Set Hostname
       ansible.windows.win_hostname:
-        name: vie-sales-cli2
+        name: vie-sales-cli3
 
     - name: Set Interface Name
       ansible.windows.win_shell: |
