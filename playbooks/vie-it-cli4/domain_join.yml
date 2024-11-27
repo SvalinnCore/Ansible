@@ -1,4 +1,4 @@
-- name: join client to domain
+- name: join vie-it-cli4 to domain
   hosts: vie-it-cli4
   gather_facts: false
   tasks:

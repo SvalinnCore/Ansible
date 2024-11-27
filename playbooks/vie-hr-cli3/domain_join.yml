@@ -1,4 +1,4 @@
-- name: join client to domain
+- name: join vie-hr-cli3 to domain
   hosts: vie-hr-cli3
   gather_facts: false
   tasks:

@@ -1,4 +1,4 @@
-- name: join client to domain
+- name: join lnz-dev-cli2 to domain
   hosts: lnz-dev-cli2
   gather_facts: false
   tasks:
