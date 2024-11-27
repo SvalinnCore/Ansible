@@ -18,6 +18,10 @@
     - name: Set Timezone
       ansible.windows.win_shell: |
         Set-TimeZone -Id "W. Europe Standard Time"
+        
+    - name: Set Private Network
+      ansible.windows.win_shell: |
+        Set-NetConnectionProfile -InterfaceAlias "VIE_IT_CLI" -NetworkCategory "Private"
 
     - name: Set Firewall Rules
       ansible.windows.win_shell: |
