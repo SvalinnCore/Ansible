@@ -1,0 +1,20 @@
+- name: Change FSMO Roles
+  hosts: dc1
+  gather_facts: no
+  tasks:
+
+    - name: Transfer RID Master role to DC2
+      ansible.windows.win_shell: |
+        Move-ADDirectoryServerOperationMasterRole -Identity "DC2" -OperationMasterRole "ridmaster"
+
+    - name: Transfer PDC Emulator role to DC2
+      ansible.windows.win_shell: |
+        Move-ADDirectoryServerOperationMasterRole -Identity "DC2" -OperationMasterRole "pdcemulator"
+
+    - name: Transfer Infrastructure Master role to DC2
+      ansible.windows.win_shell: |
+        Move-ADDirectoryServerOperationMasterRole -Identity "DC2" -OperationMasterRole "infrastructuremaster"
+
+    - name: Verify FSMO roles with netdom query fsmo
+      ansible.windows.win_shell: |
+        netdom query fsmo
