@@ -1,21 +1,21 @@
 - name: Create AD OU Structure
-  hosts: windows
+  hosts: dc1
   gather_facts: no
   tasks:
-
     - name: Create top-level OU - Wien
       microsoft.ad.ou:
         name: Wien
+        path: "DC=SVAL,DC=at"
         state: present
 
     - name: Create sub-OUs under Wien
       loop:
-        - name: IT
-        - name: Sales
-        - name: HR
+        - IT
+        - Sales
+        - HR
       microsoft.ad.ou:
-        name: "{{ item.name }}"
-        parent: "Wien"
+        name: "{{ item }}"
+        path: "OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create child OUs under Wien/IT
@@ -26,7 +26,7 @@
         - Special
       microsoft.ad.ou:
         name: "{{ item }}"
-        parent: "Wien/IT"
+        path: "OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create child OUs under Wien/Sales
@@ -37,7 +37,7 @@
         - Special
       microsoft.ad.ou:
         name: "{{ item }}"
-        parent: "Wien/Sales"
+        path: "OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create child OUs under Wien/HR
@@ -48,18 +48,19 @@
         - Special
       microsoft.ad.ou:
         name: "{{ item }}"
-        parent: "Wien/HR"
+        path: "OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create top-level OU - Linz
       microsoft.ad.ou:
         name: Linz
+        path: "DC=SVAL,DC=at"
         state: present
 
     - name: Create sub-OU under Linz
       microsoft.ad.ou:
         name: Development
-        parent: "Linz"
+        path: "OU=Linz,DC=SVAL,DC=at"
         state: present
 
     - name: Create child OUs under Linz/Development
@@ -70,5 +71,5 @@
         - Special
       microsoft.ad.ou:
         name: "{{ item }}"
-        parent: "Linz/Development"
+        path: "OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
