@@ -1,0 +1,74 @@
+- name: Create AD OU Structure
+  hosts: windows
+  gather_facts: no
+  tasks:
+
+    - name: Create top-level OU - Wien
+      microsoft.ad.ou:
+        name: Wien
+        state: present
+
+    - name: Create sub-OUs under Wien
+      loop:
+        - name: IT
+        - name: Sales
+        - name: HR
+      microsoft.ad.ou:
+        name: "{{ item.name }}"
+        parent: "Wien"
+        state: present
+
+    - name: Create child OUs under Wien/IT
+      loop:
+        - Users
+        - Computers
+        - Resources
+        - Special
+      microsoft.ad.ou:
+        name: "{{ item }}"
+        parent: "Wien/IT"
+        state: present
+
+    - name: Create child OUs under Wien/Sales
+      loop:
+        - Users
+        - Computers
+        - Resources
+        - Special
+      microsoft.ad.ou:
+        name: "{{ item }}"
+        parent: "Wien/Sales"
+        state: present
+
+    - name: Create child OUs under Wien/HR
+      loop:
+        - Users
+        - Computers
+        - Resources
+        - Special
+      microsoft.ad.ou:
+        name: "{{ item }}"
+        parent: "Wien/HR"
+        state: present
+
+    - name: Create top-level OU - Linz
+      microsoft.ad.ou:
+        name: Linz
+        state: present
+
+    - name: Create sub-OU under Linz
+      microsoft.ad.ou:
+        name: Development
+        parent: "Linz"
+        state: present
+
+    - name: Create child OUs under Linz/Development
+      loop:
+        - Users
+        - Computers
+        - Resources
+        - Special
+      microsoft.ad.ou:
+        name: "{{ item }}"
+        parent: "Linz/Development"
+        state: present
