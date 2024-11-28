@@ -1,4 +1,4 @@
-- name: Grundkonfiguration DC1
+- name: Initial Configuration DC1
   hosts: dc1
   gather_facts: no
   tasks:

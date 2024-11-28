@@ -1,4 +1,4 @@
-- name: Grundkonfiguration lnz-dev-cli1
+- name: Initial Configuration lnz-dev-cli1
   hosts: lnz-dev-cli1
   gather_facts: no
   tasks:

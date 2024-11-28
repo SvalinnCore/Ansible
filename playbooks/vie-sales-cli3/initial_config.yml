@@ -1,4 +1,4 @@
-- name: Grundkonfiguration vie-sales-cli3
+- name: Initial Configuration vie-sales-cli3
   hosts: vie-sales-cli3
   gather_facts: no
   tasks:

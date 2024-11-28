@@ -1,4 +1,4 @@
-- name: Grundkonfiguration vie-hr-cli2
+- name: Initial Configuration vie-hr-cli2
   hosts: vie-hr-cli2
   gather_facts: no
   tasks:

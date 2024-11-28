@@ -1,0 +1,23 @@
+- name: Administrator Concept
+  hosts: dc1
+  gather_facts: no
+  tasks:
+
+    - name: Create a new Domain Admin (admin)
+      ansible.windows.win_domain_user:
+        name: admin
+        password: "Ganzgeheim123!"
+        groups:
+          - Domain Admins
+        state: present
+        description: "Domain Admin user account"
+
+    - name: Create a new Enterprise Admin and Schema Admin (superadmin)
+      ansible.windows.win_domain_user:
+        name: superadmin
+        password: "Ganzgeheim123!"
+        groups:
+          - Enterprise Admins
+          - Schema Admins
+        state: present
+        description: "Enterprise Admin and Schema Admin user account"

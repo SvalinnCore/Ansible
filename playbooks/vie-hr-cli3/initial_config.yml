@@ -1,4 +1,4 @@
-- name: Grundkonfiguration vie-hr-cli3
+- name: Initial Configuration vie-hr-cli3
   hosts: vie-hr-cli3
   gather_facts: no
   tasks:

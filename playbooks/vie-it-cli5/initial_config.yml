@@ -1,4 +1,4 @@
-- name: Grundkonfiguration vie-it-cli5
+- name: Initial Configuration vie-it-cli5
   hosts: vie-it-cli5
   gather_facts: no
   tasks:

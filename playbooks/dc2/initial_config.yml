@@ -1,4 +1,4 @@
-- name: Grundkonfiguration DC2
+- name: Initial Configuration DC2
   hosts: dc2
   gather_facts: no
   tasks:
