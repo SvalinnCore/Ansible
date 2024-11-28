@@ -8,5 +8,6 @@
         dns_domain_name: SVAL.at
         domain_admin_user: Administrator@SVAL.at
         domain_admin_password: Supergeheim123!
+        domain_ou_path: "OU=Computers,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: domain
         reboot: true
