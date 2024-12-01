@@ -5,12 +5,12 @@
 
     - name: Transfer RID Master role to DC2
       ansible.windows.win_shell: |
-        Move-ADDirectoryServerOperationMasterRole -Identity "dc2" -OperationMasterRole "RIDMaster" -Confirm:$false
+        Move-ADDirectoryServerOperationMasterRole -Identity dc2 -OperationMasterRole "RIDMaster" -Confirm:$false
 
     - name: Transfer PDC Emulator role to DC2
       ansible.windows.win_shell: |
-        Move-ADDirectoryServerOperationMasterRole -Identity "dc2" -OperationMasterRole "PDCEmulator" -Confirm:$false
+        Move-ADDirectoryServerOperationMasterRole -Identity dc2 -OperationMasterRole "PDCEmulator" -Confirm:$false
 
     - name: Transfer Infrastructure Master role to DC2
       ansible.windows.win_shell: |
-        Move-ADDirectoryServerOperationMasterRole -Identity "dc2" -OperationMasterRole "InfrastructureMaster" -Confirm:$false
+        Move-ADDirectoryServerOperationMasterRole -Identity dc2 -OperationMasterRole "InfrastructureMaster" -Confirm:$false

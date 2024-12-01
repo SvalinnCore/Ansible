@@ -1,0 +1,32 @@
+- name: Create Domain Groups
+  hosts: dc1
+  gather_facts: no
+  tasks:
+
+    - name: Create IT Group
+      ansible.windows.win_domain_group:
+        name: G_IT
+        description: "Group for IT Department"
+        scope: Global
+        state: present
+
+    - name: Create Sales Group
+      ansible.windows.win_domain_group:
+        name: G_Sales
+        description: "Group for Sales Department"
+        scope: Global
+        state: present
+
+    - name: Create HR Group
+      ansible.windows.win_domain_group:
+        name: G_HR
+        description: "Group for HR Department"
+        scope: Global
+        state: present
+    
+    - name: Create Development Group
+      ansible.windows.win_domain_group:
+        name: G_Development
+        description: "Group for Development Department"
+        scope: Global
+        state: present
