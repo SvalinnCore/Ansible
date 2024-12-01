@@ -34,7 +34,7 @@ all:
           ansible_host: 10.0.2.3
     switches:
       hosts:
-        catalyst:
+        vie-acc-sw1:
           ansible_hosts: 10.0.3.1
         vie-open-vswitch:
           ansible_hosts: 10.2.3.6

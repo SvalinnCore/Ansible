@@ -1,0 +1,9 @@
+- name: Initial Configuration vie-acc-sw1
+  hosts: vie-acc-sw1
+  gather_facts: no
+  tasks:
+    - name: Apply the provided configuration
+      cisco.ios.ios_hostname:
+        config:
+          hostname: Ansible
+        state: merged
