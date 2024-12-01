@@ -1,124 +1,139 @@
-- name: Create Users and Assign to Groups
+- name: Create AD OU Structure and Assign Users
   hosts: dc1
   gather_facts: no
   tasks:
 
     - name: Create User for IT Group - Max Müller
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: max.mueller
         password: "IT@Max2024!"
         groups:
           - G_IT
+        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Lukas Schmidt
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: lukas.schmidt
         password: "IT@Lukas2024!"
         groups:
           - G_IT
+        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Jan Fischer
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: jan.fischer
         password: "IT@Jan2024!"
         groups:
           - G_IT
+        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Anna Weber
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: anna.weber
         password: "IT@Anna2024!"
         groups:
           - G_IT
+        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Paul Meyer
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: paul.meyer
         password: "IT@Paul2024!"
         groups:
           - G_IT
+        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Sarah Becker
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: sarah.becker
         password: "IT@Sarah2024!"
         groups:
           - G_IT
+        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Sales Group - Laura Wagner
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: laura.wagner
         password: "Sales@Laura2024!"
         groups:
           - G_Sales
+        ou: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Sales Group - Tim Schneider
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: tim.schneider
         password: "Sales@Tim2024!"
         groups:
           - G_Sales
+        ou: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Sales Group - Julia Hoffmann
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: julia.hoffmann
         password: "Sales@Julia2024!"
         groups:
           - G_Sales
+        ou: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for HR Group - Eva Bauer
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: eva.bauer
         password: "HR@Eva2024!"
         groups:
           - G_HR
+        ou: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for HR Group - Markus Schmidt
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: markus.schmidt
         password: "HR@Markus2024!"
         groups:
           - G_HR
+        ou: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for HR Group - Lena Schulz
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: lena.schulz
         password: "HR@Lena2024!"
         groups:
           - G_HR
+        ou: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Development Group - Simon Braun
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: simon.braun
         password: "Dev@Simon2024!"
         groups:
           - G_Development
+        ou: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Development Group - Anna Richter
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: anna.richter
         password: "Dev@Anna2024!"
         groups:
           - G_Development
+        ou: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Development Group - Tobias Zimmermann
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: tobias.zimmermann
         password: "Dev@Tobias2024!"
         groups:
           - G_Development
+        ou: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
