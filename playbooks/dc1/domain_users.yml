@@ -6,7 +6,10 @@
     - name: Create User for IT Group - Max Müller
       microsoft.ad.user:
         name: max.mueller
+        firstname: Max
+        surname: Müller
         password: "IT@Max2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_IT
@@ -17,7 +20,10 @@
     - name: Create User for IT Group - Lukas Schmidt
       microsoft.ad.user:
         name: lukas.schmidt
+        firstname: Lukas
+        surname: Schmidt
         password: "IT@Lukas2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_IT
@@ -28,7 +34,10 @@
     - name: Create User for IT Group - Jan Fischer
       microsoft.ad.user:
         name: jan.fischer
+        firstname: Jan
+        surname: Fischer
         password: "IT@Jan2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_IT
@@ -39,7 +48,10 @@
     - name: Create User for IT Group - Anna Weber
       microsoft.ad.user:
         name: anna.weber
+        firstname: Anna
+        surname: Weber
         password: "IT@Anna2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_IT
@@ -50,7 +62,10 @@
     - name: Create User for IT Group - Paul Meyer
       microsoft.ad.user:
         name: paul.meyer
+        firstname: Paul
+        surname: Meyer
         password: "IT@Paul2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_IT
@@ -61,7 +76,10 @@
     - name: Create User for IT Group - Sarah Becker
       microsoft.ad.user:
         name: sarah.becker
+        firstname: Sarah
+        surname: Becker
         password: "IT@Sarah2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_IT
@@ -72,7 +90,10 @@
     - name: Create User for Sales Group - Laura Wagner
       microsoft.ad.user:
         name: laura.wagner
+        firstname: Laura
+        surname: Wagner
         password: "Sales@Laura2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_Sales
@@ -83,7 +104,10 @@
     - name: Create User for Sales Group - Tim Schneider
       microsoft.ad.user:
         name: tim.schneider
+        firstname: Tim
+        surname: Schneider
         password: "Sales@Tim2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_Sales
@@ -94,7 +118,10 @@
     - name: Create User for Sales Group - Julia Hoffmann
       microsoft.ad.user:
         name: julia.hoffmann
+        firstname: Julia
+        surname: Hoffmann
         password: "Sales@Julia2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_Sales
@@ -105,7 +132,10 @@
     - name: Create User for HR Group - Eva Bauer
       microsoft.ad.user:
         name: eva.bauer
+        firstname: Eva
+        surname: Bauer
         password: "HR@Eva2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_HR
@@ -116,7 +146,10 @@
     - name: Create User for HR Group - Markus Schmidt
       microsoft.ad.user:
         name: markus.schmidt
+        firstname: Markus
+        surname: Schmidt
         password: "HR@Markus2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_HR
@@ -127,7 +160,10 @@
     - name: Create User for HR Group - Lena Schulz
       microsoft.ad.user:
         name: lena.schulz
+        firstname: Lena
+        surname: Schulz
         password: "HR@Lena2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_HR
@@ -138,7 +174,10 @@
     - name: Create User for Development Group - Simon Braun
       microsoft.ad.user:
         name: simon.braun
+        firstname: Simon
+        surname: Braun
         password: "Dev@Simon2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_Development
@@ -149,7 +188,10 @@
     - name: Create User for Development Group - Anna Richter
       microsoft.ad.user:
         name: anna.richter
+        firstname: Anna
+        surname: Richter
         password: "Dev@Anna2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_Development
@@ -160,7 +202,10 @@
     - name: Create User for Development Group - Tobias Zimmermann
       microsoft.ad.user:
         name: tobias.zimmermann
+        firstname: Tobias
+        surname: Zimmermann
         password: "Dev@Tobias2024!"
+        password_never_expires: yes
         groups:
           set:
             - G_Development
