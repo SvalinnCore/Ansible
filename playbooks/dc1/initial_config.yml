@@ -21,8 +21,8 @@
 
     - name: Set Firewall Rules
       ansible.windows.win_shell: |
-        Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-In" -Enabled True
-        Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-Out" -Enabled True
+        Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-In" -Enabled True -Profile Domain,Private
+        Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-Out" -Enabled True -Profile Domain,Private
     
     - name: Enable PS-Remoting
       ansible.windows.win_shell: |
