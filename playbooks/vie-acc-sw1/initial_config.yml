@@ -5,5 +5,5 @@
     - name: Apply the provided configuration
       cisco.ios.ios_hostname:
         config:
-          hostname: Ansible
+          hostname: Ansible_t
         state: merged
