@@ -6,7 +6,7 @@
     - name: join host to SVAL.at with automatic reboot
       microsoft.ad.membership:
         dns_domain_name: SVAL.at
-        domain_admin_user: Administrator@SVAL.at
+        domain_admin_user: admin@SVAL.at
         domain_admin_password: Supergeheim123!
         domain_ou_path: "OU=Computers,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: domain
