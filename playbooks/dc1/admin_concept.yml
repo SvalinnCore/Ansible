@@ -4,20 +4,24 @@
   tasks:
 
     - name: Create a new Domain Admin (admin)
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: admin
-        password: "Ganzgeheim123!"
+        password: Ganzgeheim123!
         groups:
-          - Domain Admins
+          set:
+            - Domain Users
+            - Domain Admins
         state: present
         description: "Domain Admin user account"
 
     - name: Create a new Enterprise Admin and Schema Admin (superadmin)
-      ansible.windows.win_domain_user:
+      microsoft.ad.user:
         name: superadmin
-        password: "Ganzgeheim123!"
+        password: Ganzgeheim123!
         groups:
-          - Enterprise Admins
-          - Schema Admins
+          set:
+            - Domain Users
+            - Enterprise Admins
+            - Schema Admins
         state: present
         description: "Enterprise Admin and Schema Admin user account"
