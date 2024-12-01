@@ -8,8 +8,10 @@
         name: max.mueller
         password: "IT@Max2024!"
         groups:
-          - G_IT
-        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_IT
+            - Domain Users
+        path: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Lukas Schmidt
@@ -17,8 +19,10 @@
         name: lukas.schmidt
         password: "IT@Lukas2024!"
         groups:
-          - G_IT
-        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_IT
+            - Domain Users
+        path: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Jan Fischer
@@ -26,8 +30,10 @@
         name: jan.fischer
         password: "IT@Jan2024!"
         groups:
-          - G_IT
-        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_IT
+            - Domain Users
+        path: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Anna Weber
@@ -35,8 +41,10 @@
         name: anna.weber
         password: "IT@Anna2024!"
         groups:
-          - G_IT
-        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_IT
+            - Domain Users
+        path: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Paul Meyer
@@ -44,8 +52,10 @@
         name: paul.meyer
         password: "IT@Paul2024!"
         groups:
-          - G_IT
-        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_IT
+            - Domain Users
+        path: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for IT Group - Sarah Becker
@@ -53,8 +63,10 @@
         name: sarah.becker
         password: "IT@Sarah2024!"
         groups:
-          - G_IT
-        ou: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_IT
+            - Domain Users
+        path: "OU=Users,OU=IT,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Sales Group - Laura Wagner
@@ -62,8 +74,10 @@
         name: laura.wagner
         password: "Sales@Laura2024!"
         groups:
-          - G_Sales
-        ou: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_Sales
+            - Domain Users
+        path: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Sales Group - Tim Schneider
@@ -71,8 +85,10 @@
         name: tim.schneider
         password: "Sales@Tim2024!"
         groups:
-          - G_Sales
-        ou: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_Sales
+            - Domain Users
+        path: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Sales Group - Julia Hoffmann
@@ -80,8 +96,10 @@
         name: julia.hoffmann
         password: "Sales@Julia2024!"
         groups:
-          - G_Sales
-        ou: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_Sales
+            - Domain Users
+        path: "OU=Users,OU=Sales,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for HR Group - Eva Bauer
@@ -89,8 +107,10 @@
         name: eva.bauer
         password: "HR@Eva2024!"
         groups:
-          - G_HR
-        ou: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_HR
+            - Domain Users
+        path: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for HR Group - Markus Schmidt
@@ -98,8 +118,10 @@
         name: markus.schmidt
         password: "HR@Markus2024!"
         groups:
-          - G_HR
-        ou: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_HR
+            - Domain Users
+        path: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for HR Group - Lena Schulz
@@ -107,8 +129,10 @@
         name: lena.schulz
         password: "HR@Lena2024!"
         groups:
-          - G_HR
-        ou: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
+          set:
+            - G_HR
+            - Domain Users
+        path: "OU=Users,OU=HR,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Development Group - Simon Braun
@@ -116,8 +140,10 @@
         name: simon.braun
         password: "Dev@Simon2024!"
         groups:
-          - G_Development
-        ou: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
+          set:
+            - G_Development
+            - Domain Users
+        path: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Development Group - Anna Richter
@@ -125,8 +151,10 @@
         name: anna.richter
         password: "Dev@Anna2024!"
         groups:
-          - G_Development
-        ou: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
+          set:
+            - G_Development
+            - Domain Users
+        path: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
 
     - name: Create User for Development Group - Tobias Zimmermann
@@ -134,6 +162,8 @@
         name: tobias.zimmermann
         password: "Dev@Tobias2024!"
         groups:
-          - G_Development
-        ou: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
+          set:
+            - G_Development
+            - Domain Users
+        path: "OU=Users,OU=Development,OU=Linz,DC=SVAL,DC=at"
         state: present
