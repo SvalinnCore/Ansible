@@ -32,5 +32,13 @@
       ansible.windows.win_shell: |
         Enable-PSRemoting -Force
 
+    - name: Enable Remote Desktop
+      ansible.windows.win_shell: |
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 0
+    
+    - name: Enable Remote Desktop Firewall Rule
+      ansible.windows.win_shell: |
+        Enable-NetFirewallRule -DisplayGroup "Remote Desktop" 
+
     - name: Reboot
       ansible.windows.win_reboot:
