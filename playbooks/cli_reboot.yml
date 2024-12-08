@@ -1,0 +1,7 @@
+- name: reboot all clients
+  hosts: wincli
+  gather_facts: false
+  tasks:
+        
+        - name: Reboot
+            win_reboot:
