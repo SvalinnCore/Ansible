@@ -2,11 +2,13 @@
 - name: Konfiguriere persistente IP-Adresse auf einem Linux-Client
   hosts: vie-open-vswitch
   become: yes  # Damit werden root-Rechte verwendet
-  vars:
-    hostname: "L3-test-openv"
+  vars_prompt:
+    - name: "hostname"
+      prompt: "Bitte geben Sie den Hostnamen für den Switch ein"
+      private: no  # Setze auf 'yes', falls die Eingabe nicht sichtbar sein soll
   tasks:
     - name: Set the system hostname
-        ansible.builtin.hostname:
+      ansible.builtin.hostname:
         name: "{{ hostname }}"
 
     - name: Update /etc/hosts with new hostname
@@ -18,13 +20,14 @@
 
     - name: Überprüfe, ob Netplan-Datei existiert
       stat:
-        path: /etc/netplan/50-cloud.init.yaml
+        path: /etc/netplan/50-cloud-init.yaml
       register: netplan_config
 
     - name: Konfiguriere statische IP-Adresse mit Netplan
       copy:
         content: |
           network:
+              version: 2
               ethernets:
                 ens33:
                   dhcp4: true
@@ -33,7 +36,7 @@
                   set-name: outside
                 VIE_to_Serv:
                   match:
-                    macaddress: 00:50:56:BC:B0:26
+                    macaddress: 00:50:56:bc:b0:26
                   set-name: VIE_to_Serv_209
                 VIE_201_Serv:
                   match:
@@ -46,8 +49,8 @@
                     - 172.16.1.1/24
                   match:
                     macaddress: 00:50:56:bc:57:15
-                  set-name: Extra_mgmt 
-        dest: /etc/netplan/50-cloud.init.yaml
+                  set-name: Extra_mgmt
+        dest: /etc/netplan/50-cloud-init.yaml
         mode: '0644'
 
     - name: Wende Netplan-Konfiguration an
