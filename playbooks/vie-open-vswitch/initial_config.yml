@@ -50,5 +50,9 @@
 
     - name: Wende Netplan-Konfiguration an
       command: netplan apply
+
+    - name: Reboot the switch to apply all changes
+      ansible.builtin.reboot:
+        reboot_timeout: 300
       
           
