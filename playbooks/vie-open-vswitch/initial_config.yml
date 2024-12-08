@@ -1,6 +1,6 @@
 ---
 - name: Konfiguriere persistente IP-Adresse auf einem Linux-Client
-  hosts: Ubuntu2
+  hosts: vie-open-vswitch
   become: yes  # Damit werden root-Rechte verwendet
   tasks:
     - name: Überprüfe, ob Netplan-Datei existiert
