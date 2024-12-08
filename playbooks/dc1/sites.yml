@@ -1,0 +1,36 @@
+- name: Create Sites and Site-Link
+  hosts: dc1
+  gather_facts: no
+  tasks:
+
+    - name: create Site Vienna
+      win_shell: |
+        New-ADReplicationSite -Name "Vienna"
+
+    - name: create Subnnet for Vienna
+      win_shell: |
+        New-ADReplicationSubnet -Name "10.2.1.0/29" -Site "Vienna"
+
+    - name: create Site Linz
+      win_shell: |
+        New-ADReplicationSite -Name "Linz"
+
+    - name: create Subnnet for Linz
+      win_shell: |
+        New-ADReplicationSubnet -Name "10.3.0.0/29" -Site "Linz"
+
+    - name: create Site-Link between Vienna and Linz
+      win_shell: |
+        New-ADReplicationSiteLink -Name Viennna-Linz -SitesIncluded Vienna,Linz -Cost 50 -ReplicationFrequencyInMinutes 15
+    
+    - name: move DC1 to Site
+      win_shell: |
+        Move-ADDirectoryServer -Identity "DC1" -Site "Vienna"
+    
+    - name: move DC2 to Site
+      win_shell: |
+        Move-ADDirectoryServer -Identity "DC2" -Site "Vienna"
+
+    - name: move DC3 to Site
+      win_shell: |
+        Move-ADDirectoryServer -Identity "DC3" -Site "Linz"
