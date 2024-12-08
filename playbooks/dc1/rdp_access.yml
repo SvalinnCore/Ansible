@@ -1,0 +1,36 @@
+- name: Allow RDP Connection
+  hosts: dc1
+  gather_facts: no
+  tasks:
+
+    - name: Create Local Remote Desktop Users Group
+      microsoft.ad.group:
+        name: Local Remote Desktop Users
+        scope: Global
+        state: present
+    
+    - name: Create new GPO
+      win_shell: |
+        New-GPO -Name "RDP Access"
+    
+    - name: GPO Restriction Group
+      win_shell: |
+         Set-GPPrefRegistryValue -Name  "RDP Access" -Context "Computer" -Key "Computer Configuration\Windows Settings\Security Settings\Restricted Groups" -ValueName "Remote Desktop Users" -Type MultiString -Value "Remote Desktop Users"
+
+    - name: Link GPO to IT
+      win_shell: |
+        New-GPLink -Name "RDP Access" -Target "OU=Computers,OU=IT,OU=Wien,DC=SVAL,DC=at" -Enforced Yes
+    
+    - name: Link GPO to Sales
+      win_shell: |
+        New-GPLink -Name "RDP Access" -Target "OU=Computers,OU=Sales,OU=Wien,DC=SVAL,DC=at" -Enforced Yes
+
+    - name: Link GPO to HR
+      win_shell: | 
+        New-GPLink -Name "RDP Access" -Target "OU=Computers,OU=HR,OU=Wien,DC=SVAL,DC=at" -Enforced Yes
+
+    - name: Link GPO to Development
+      win_shell: |
+        New-GPLink -Name "RDP Access" -Target "OU=Computers,OU=Development,OU=Wien,DC=SVAL,DC=at" -Enforced Yes
+    
+    

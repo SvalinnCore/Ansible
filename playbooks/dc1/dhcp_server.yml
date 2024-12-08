@@ -10,10 +10,10 @@
         state: present
     
     - name: Install RSAT for DHCP
-        win_feature:
-          name:
-            - RSAT-DHCP
-          state: present
+      win_feature:
+        name:
+          - RSAT-DHCP
+        state: present
 
     - name: Authorize DHCP Server in AD
       win_shell: |
