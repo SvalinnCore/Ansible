@@ -1,0 +1,17 @@
+network:
+    ethernets:
+      ens33:
+         dhcp4: true
+         match:
+           macaddress: 00:50:56:bc:fb:19
+         set-name: outside
+      VIE_to_Serv:
+         match:
+           macaddress: 00:50:56:bc:4e:98
+         set-name: VIE_to_Serv
+      VIE_201_Serv:
+         match:
+           macaddress: 00:50:56:bc:88:6e
+         addresses:
+           - 10.2.0.1/30
+         set-name: VIE_201_Serv

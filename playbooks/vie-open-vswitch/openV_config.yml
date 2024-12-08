@@ -1,0 +1,92 @@
+---
+- name: Configure OpenvSwitch, SVIs, and Netplan on Ubuntu
+  hosts: switches
+  become: true
+  vars:
+    bridge_name: "Wien-L3-SW1"
+    trunk_interface: "Trunk_Serv"
+    sv_interfaces:
+      - { vlan: 207, ip: "192.168.207.1/24" }
+      - { vlan: 208, ip: "192.168.208.1/24" }
+      - { vlan: 209, ip: "192.168.209.1/24" }
+  tasks:
+
+  - name: Configure Netplan for trunk interface
+    ansible.builtin.copy:
+      dest: /etc/netplan/50-cloud-init.yaml.yaml
+      content: |
+        network:
+          version: 2
+          renderer: networkd
+          ethernets:
+            {{ trunk_interface }}:
+              dhcp4: no
+              dhcp6: no
+          bridges:
+            {{ bridge_name }}:
+              interfaces: [{{ trunk_interface }}]
+              dhcp4: no
+    register: netplan_config
+
+  - name: Apply Netplan configuration
+    ansible.builtin.shell:
+      cmd: "netplan apply"
+    register: netplan_apply
+      failed_when: "netplan_apply.rc != 0"
+
+  - name: Install OpenvSwitch
+    ansible.builtin.shell:
+      cmd: |
+        apt-get update && apt-get install -y openvswitch-switch
+      register: ovs_install
+      failed_when: "ovs_install.rc != 0"
+
+  - name: Ensure OpenvSwitch service is running
+    ansible.builtin.shell:
+      cmd: |
+        systemctl start openvswitch-switch
+        systemctl enable openvswitch-switch
+      register: ovs_service
+      failed_when: "ovs_service.rc != 0"
+
+  - name: Verify OpenvSwitch is running
+    ansible.builtin.shell:
+      cmd: "systemctl is-active openvswitch-switch"
+      register: ovs_status
+      failed_when: "ovs_status.stdout.strip() != 'active'"
+
+  - name: Create OpenvSwitch bridge
+    ansible.builtin.shell:
+      cmd: |
+        if ! ovs-vsctl br-exists {{ bridge_name }}; then
+          ovs-vsctl add-br {{ bridge_name }}
+        fi
+        ovs-vsctl add-port {{ bridge_name }} {{ trunk_interface }}
+      register: ovs_bridge
+      failed_when: "ovs_bridge.rc != 0"
+
+  - name: Remove existing VLAN interfaces if necessary
+    ansible.builtin.shell:
+      cmd: |
+        ip link delete vlan{{ item.vlan }} 2>/dev/null || true
+    with_items: "{{ sv_interfaces }}"
+
+  - name: Configure SVIs
+    ansible.builtin.shell:
+      cmd: |
+        ovs-vsctl add-port {{ bridge_name }} vlan{{ item.vlan }} -- set interface vlan{{ item.vlan }} type=internal
+        ip link set dev vlan{{ item.vlan }} up
+        ip addr add {{ item.ip }} dev vlan{{ item.vlan }}
+      register: svi_config
+      with_items: "{{ sv_interfaces }}"
+      failed_when: "svi_config.rc != 0"
+
+  - name: Verify configuration
+    ansible.builtin.shell:
+      cmd: "ovs-vsctl show"
+    register: ovs_show_output
+      failed_when: "ovs_show_output.rc != 0"
+
+  - name: Display configuration output
+    ansible.builtin.debug:
+      var: ovs_show_output.stdout
