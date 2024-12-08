@@ -1,0 +1,25 @@
+---
+- name: Configure Open vSwitch
+  hosts: vie-open-vswitch
+  become: true
+  tasks:
+    - name: Update apt package list
+      ansible.builtin.apt:
+        update_cache: yes
+        
+    - name: Installiere FRR und FRR-Pythontools
+      ansible.builtin.command:
+        cmd: sudo apt install -y frr frr-pythontools
+
+    - name: Bearbeite die Datei /etc/frr/daemons, um OSPF zu aktivieren
+      ansible.builtin.lineinfile:
+        path: /etc/frr/daemons
+        regexp: '^#ospfd'
+        line: 'ospfd=yes'
+        backup: yes
+
+    - name: Starte den FRR-Dienst neu
+      ansible.builtin.systemd:
+        name: frr
+        state: restarted
+        enabled: yes
