@@ -1,0 +1,8 @@
+- name: updates gpos on all clients
+  hosts: wincli
+  gather_facts: false
+  tasks:
+  
+    - name: gpupdate
+      win_shell: |
+        gpupdate /force

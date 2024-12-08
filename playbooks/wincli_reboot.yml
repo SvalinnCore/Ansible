@@ -2,6 +2,6 @@
   hosts: wincli
   gather_facts: false
   tasks:
-        
-        - name: Reboot
-            win_reboot:
+  
+    - name: Reboot
+      win_reboot:
