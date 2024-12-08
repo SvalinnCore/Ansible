@@ -1,38 +1,14 @@
 ---
-- name: Configure OpenvSwitch, SVIs, and Netplan on Ubuntu
+- name: Configure OpenvSwitch and SVIs on Ubuntu using shell commands
   hosts: switches
   become: true
   vars:
     bridge_name: "Wien-L3-SW1"
-    trunk_interface: "Trunk_Serv"
     sv_interfaces:
-      - { vlan: 207, ip: "192.168.207.1/24" }
-      - { vlan: 208, ip: "192.168.208.1/24" }
-      - { vlan: 209, ip: "192.168.209.1/24" }
+      - { vlan: 207, ip: "10.2.1.6/24" }
+      - { vlan: 208, ip: "10.2.2.6/24" }
+      - { vlan: 209, ip: "10.2.3.6/24" }
   tasks:
-
-  - name: Configure Netplan for trunk interface
-    ansible.builtin.copy:
-      dest: /etc/netplan/50-cloud-init.yaml.yaml
-      content: |
-        network:
-          version: 2
-          renderer: networkd
-          ethernets:
-            {{ trunk_interface }}:
-              dhcp4: no
-              dhcp6: no
-          bridges:
-            {{ bridge_name }}:
-              interfaces: [{{ trunk_interface }}]
-              dhcp4: no
-    register: netplan_config
-
-  - name: Apply Netplan configuration
-    ansible.builtin.shell:
-      cmd: "netplan apply"
-    register: netplan_apply
-      failed_when: "netplan_apply.rc != 0"
 
   - name: Install OpenvSwitch
     ansible.builtin.shell:
@@ -58,10 +34,9 @@
   - name: Create OpenvSwitch bridge
     ansible.builtin.shell:
       cmd: |
-        if ! ovs-vsctl br-exists {{ bridge_name }}; then
-          ovs-vsctl add-br {{ bridge_name }}
+        if ! ovs-vsctl br-exists {{ Wien-L3-SW1 }}; then
+          ovs-vsctl add-br {{ Wien-L3-SW1 }}
         fi
-        ovs-vsctl add-port {{ bridge_name }} {{ trunk_interface }}
       register: ovs_bridge
       failed_when: "ovs_bridge.rc != 0"
 
