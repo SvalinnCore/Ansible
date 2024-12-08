@@ -3,6 +3,17 @@
   hosts: vie-open-vswitch
   become: yes  # Damit werden root-Rechte verwendet
   tasks:
+    - name: Set the system hostname
+        ansible.builtin.hostname:
+        name: "{{ L3_test_openv }}"
+
+    - name: Update /etc/hosts with new hostname
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        regexp: "^127\\.0\\.1\\.1"
+        line: "127.0.1.1 {{ L3_test_openv }}"
+        state: present
+
     - name: Überprüfe, ob Netplan-Datei existiert
       stat:
         path: /etc/netplan/50-cloud.init.yaml
