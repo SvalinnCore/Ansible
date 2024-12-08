@@ -16,18 +16,25 @@
                 ens33:
                   dhcp4: true
                   match:
-                    macaddress: 00:50:56:bc:fb:19
+                    macaddress: 00:50:56:bc:e0:63
                   set-name: outside
                 VIE_to_Serv:
                   match:
-                    macaddress: 00:50:56:bc:4e:98
-                  set-name: VIE_to_Serv
+                    macaddress: 00:50:56:BC:B0:26
+                  set-name: VIE_to_Serv_209
                 VIE_201_Serv:
                   match:
-                    macaddress: 00:50:56:bc:88:6e
+                    macaddress: 00:50:56:BC:E1:FF
                   addresses:
                     - 10.2.0.1/30
-                  set-name: VIE_201_Serv
+                  set-name: VIE_201_Serv_HR
+                ens33:
+                  addresses:
+                    - 172.16.1.1/24
+                  match:
+                    macaddress: 00:50:56:bc:57:15
+                  set-name: Extra_mgmt
+        set-name: Extra_Mgmt  
         dest: /etc/netplan/50-cloud.init.yaml
         mode: '0644'
 
