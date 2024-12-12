@@ -1,0 +1,108 @@
+- name: AGDLP
+  hosts: dc1
+  gather_facts: no
+  tasks:
+
+    - name: Create Domain Local Group IT Read
+      microsoft.ad.group:
+        name: DL_IT_R
+        description: "Group for IT Department Read Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_IT
+        state: present
+
+    - name: Create Domain Local Group IT Manage
+      microsoft.ad.group:
+        name: DL_IT_M
+        description: "Group for IT Department Manage Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_IT
+        state: present
+
+    - name: Create Domain Local Group Sales Read
+      microsoft.ad.group:
+        name: DL_Sales_R
+        description: "Group for Sales Department Read Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_Sales
+        state: present
+
+    - name: Create Domain Local Group Sales Manage
+      microsoft.ad.group:
+        name: DL_Sales_M
+        description: "Group for Sales Department Manage Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_Sales
+        state: present
+
+    - name: Create Domain Local Group HR Read
+      microsoft.ad.group:
+        name: DL_HR_R
+        description: "Group for HR Department Read Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_HR
+            - G_Sales
+        state: present
+
+    - name: Create Domain Local Group HR Manage
+      microsoft.ad.group:
+        name: DL_HR_M
+        description: "Group for HR Department Manage Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_HR
+        state: present
+    
+    - name: Create Domain Local Group Development Read
+      microsoft.ad.group:
+        name: DL_Development_R
+        description: "Group for Development Department Read Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_Development
+        state: present
+
+    - name: Create Domain Local Group Development Manage
+      microsoft.ad.group:
+        name: DL_Development_M
+        description: "Group for Development Department Manage Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_Development
+        state: present
+    
+    - name: Create Domain Local Group General Read
+      microsoft.ad.group:
+        name: DL_General_R
+        description: "Group for General Department Read Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_IT
+            - G_Sales
+            - G_HR
+            - G_Development
+        state: present
+
+    - name: Create Domain Local Group General Manage
+      microsoft.ad.group:
+        name: DL_General_M
+        description: "Group for General Department Manage Permission"
+        scope: domainlocal
+        members:
+          add:
+            - G_Sales
+        state: present
