@@ -107,4 +107,3 @@
     - name: Print OVS status
       ansible.builtin.debug:
         var: ovs_status.stdout
->>>>>>> 37a996dc596d8159c35d4b12a01c72848f9dce52

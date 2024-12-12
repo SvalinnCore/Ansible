@@ -59,4 +59,3 @@
     - name: Reboot the switch to apply all changes
       ansible.builtin.reboot:
         reboot_timeout: 300
->>>>>>> 37a996dc596d8159c35d4b12a01c72848f9dce52
