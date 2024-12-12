@@ -26,6 +26,27 @@
     - name: Gib die Inhalte der Datei /etc/frr/daemons aus (Debugging)
       ansible.builtin.debug:
         var: daemons_file_content.stdout_lines
+    
+    - name: OSPF konfig über vtsyh
+      ansible.builtin.shell:
+        cmd: |
+          vtysh -c "configure terminal" \
+                -c "router ospf" \
+                -c "network 10.2.1.0/29 area 10" \
+                -c "network 10.2.2.0/29 area 10" \
+                -c "network 10.2.3.0/29 area 10" \
+                -c "router-id 10.2.0.1" \
+                -c "exit" \
+                -c "do write"
+
+    - name: Ausgabe die Datei /etc/frr/frr.conf
+      ansible.builtin.command:
+        cmd: cat /etc/frr/frr.conf
+      register: daemons_file_content
+
+    - name: Gib die Inhalte der Datei /etc/frr/frr.conf aus (Debugging)
+      ansible.builtin.debug:
+        var: daemons_file_content.stdout_lines
 
     - name: Starte den FRR-Dienst neu
       ansible.builtin.systemd:
