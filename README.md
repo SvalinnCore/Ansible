@@ -1,17 +1,17 @@
-# Ansible Repository Documentation
+# Ansible Repository Dokumentation
 
-## Overview
-This Git repository contains the complete Ansible setup for deploying and managing an Active Directory environment. It includes all necessary playbooks, inventories, roles, and configurations to automate the deployment and maintenance of an AD infrastructure.
+## Übersicht
+Dieses Git-Repository enthält die komplette Ansible-Aussetzung zur Bereitstellung und Verwaltung einer Active Directory-Umgebung. Es umfasst alle notwendigen Playbooks, Inventories, Rollen und Konfigurationen, um die Bereitstellung und Wartung einer AD-Infrastruktur zu automatisieren.
 
-## Repository Contents
+## Inhalt des Repositories
 
-- **Playbooks**: YAML files that define tasks for configuring and managing the infrastructure.
-- **Inventories**: Files and directories for organizing host and group variables.
-- **Roles**: Modular components for reusable Ansible code.
-- **Configuration Files**: Custom Ansible configurations for optimizing execution and environment setup.
+- **Playbooks**: YAML-Dateien, die Aufgaben zur Konfiguration und Verwaltung der Infrastruktur definieren.
+- **Inventories**: Dateien und Verzeichnisse zur Organisation von Host- und Gruppenvariablen.
+- **Rollen**: Modulare Komponenten für wiederverwendbaren Ansible-Code.
+- **Konfigurationsdateien**: Anpassbare Ansible-Konfigurationen zur Optimierung der Ausführung und Umgebungseinrichtung.
 
-## Directory Structure
-The repository is organized as follows:
+## Verzeichnisstruktur
+Das Repository ist wie folgt organisiert:
 ```
 ansible/
 |-- inventories/
@@ -25,23 +25,23 @@ ansible/
 |-- ansible.cfg
 ```
 
-## Usage
+## Verwendung
 
-### Verifying the Setup
-Ensure the control host can communicate with target hosts:
+### Einrichtung überprüfen
+Prüfen Sie, ob der Control-Host mit den Zielhosts kommunizieren kann:
 ```bash
 ansible all -m ping
 ```
-For Windows hosts:
+Für Windows-Hosts:
 ```bash
 ansible all -m win_ping
 ```
 
-### Running Playbooks
-Example to configure a domain controller:
+### Playbooks ausführen
+Beispiel zur Konfiguration eines Domain Controllers:
 ```bash
 ansible-playbook playbooks/setup_dc.yml
 ```
 
-## Additional Information
-- Detailed documentation is available in the [Ansible Documentation](https://docs.ansible.com/).
+## Zusätzliche Informationen
+- Ausführliche Dokumentation finden Sie in der [Ansible-Dokumentation](https://docs.ansible.com/).
