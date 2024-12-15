@@ -16,16 +16,16 @@
         state: present
 
     - name: Install RSAT for Active Directory
-    win_feature:
-      name:
-        - RSAT-AD-AdminCenter
-      state: present
+      win_feature:
+        name:
+          - RSAT-AD-AdminCenter
+        state: present
 
     - name: Install RSAT for DNS
-    win_feature:
-      name:
-        - RSAT-DNS-Server
-      state: present
+      win_feature:
+        name:
+          - RSAT-DNS-Server
+        state: present
 
     - name: Promote Domain Controller
       win_shell: |

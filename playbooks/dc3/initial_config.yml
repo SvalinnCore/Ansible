@@ -1,0 +1,40 @@
+- name: Initial Configuration DC3
+  hosts: dc3
+  gather_facts: no
+  tasks:
+
+    - name: Set Hostname
+      win_hostname:
+        name: DC3
+
+    - name: Set Interface Name
+      win_shell: |
+        Get-NetAdapter | Rename-NetAdapter -NewName "LNZ_InfraServ"
+    
+    - name: Set DNS
+      win_shell: |
+        Set-DnsClientServerAddress -InterfaceAlias "LNZ_InfraServ" -ServerAddresses ("10.2.1.1", "10.2.1.2")
+
+    - name: Set Timezone
+      win_shell: |
+        Set-TimeZone -Id "W. Europe Standard Time"
+
+    - name: Set Firewall Rules
+      win_shell: |
+        Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-In" -Enabled True -Profile Domain,Private
+        Set-NetFirewallRule -Name "FPS-ICMP4-ERQ-Out" -Enabled True -Profile Domain,Private
+    
+    - name: Enable PS-Remoting
+      win_shell: |
+        Enable-PSRemoting -Force
+
+    - name: Enable Remote Desktop
+      win_shell: |
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 0
+    
+    - name: Enable Remote Desktop Firewall Rule
+      win_shell: |
+        Enable-NetFirewallRule -DisplayGroup "Remote Desktop" 
+    
+    - name: Reboot
+      win_reboot:
