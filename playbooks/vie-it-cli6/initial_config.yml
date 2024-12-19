@@ -10,10 +10,6 @@
     - name: Set Interface Name
       win_shell: |
         Get-NetAdapter | Rename-NetAdapter -NewName "VIE_IT_CLI"
-    
-    - name: Set DNS
-      win_shell: |
-        Set-DnsClientServerAddress -InterfaceAlias "VIE_IT_CLI" -ServerAddresses ("10.2.1.1", "10.2.1.2")
 
     - name: Set Timezone
       win_shell: |
