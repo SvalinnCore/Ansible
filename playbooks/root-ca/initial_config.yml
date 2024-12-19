@@ -5,7 +5,7 @@
 
     - name: Set Hostname
       win_hostname:
-        name: DC1
+        name: Root-CA
 
     - name: Set Interface Name
       win_shell: |
@@ -13,7 +13,7 @@
     
     - name: Set DNS
       win_shell: |
-        Set-DnsClientServerAddress -InterfaceAlias "VIE_InfraSrv" -ServerAddresses ("10.2.1.1", "10.2.1.2")
+        Set-DnsClientServerAddress -InterfaceAlias "VIE_InfraSrv" -ServerAddresses ("10.2.1.1", "10.2.2.3")
 
     - name: Set Timezone
       win_shell: |
