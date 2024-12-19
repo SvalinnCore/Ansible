@@ -10,10 +10,10 @@
         state: present
     
     - name: Install RSAT for DHCP
-      win_feature:
-        name:
-          - RSAT-DHCP
-        state: present
+        win_feature:
+          name:
+            - RSAT-DHCP
+          state: present
 
     - name: Authorize DHCP Server in AD
       win_shell: |
@@ -25,7 +25,7 @@
 
     - name: Configure DHCP Options for SVAL_VIE-IT-CLI
       win_shell: |
-        Set-DhcpServerv4OptionValue -ScopeId 10.0.4.0 -DnsServer 10.2.1.1 -Router 10.0.4.254
+        Set-DhcpServerv4OptionValue -ScopeId 10.0.4.0 -DnsServer 10.2.1.1,10.2.1.2 -Router 10.0.4.254
     
     - name: Add exclusion range for Gateway and SVI for SVAL_VIE-Sales-CLI
       win_shell: |
@@ -47,7 +47,7 @@
 
     - name: Configure DHCP Options for SVAL_VIE-Sales-CLI
       win_shell: |
-        Set-DhcpServerv4OptionValue -ScopeId 10.0.1.0 -DnsServer 10.2.1.1 -Router 10.0.1.254
+        Set-DhcpServerv4OptionValue -ScopeId 10.0.1.0 -DnsServer 10.2.1.1,10.2.1.2 -Router 10.0.1.254
 
     - name: Add exclusion range for Gateway for SVAL_VIE-Sales-CLI
       win_shell: |
@@ -65,7 +65,7 @@
 
     - name: Configure DHCP Options for SVAL_VIE-HR-CLI
       win_shell: |
-        Set-DhcpServerv4OptionValue -ScopeId 10.0.2.0 -DnsServer 10.2.1.1 -Router 10.0.2.254
+        Set-DhcpServerv4OptionValue -ScopeId 10.0.2.0 -DnsServer 10.2.1.1,10.2.1.2 -Router 10.0.2.254
 
     - name: Add exclusion range for Gateway for SVAL_VIE-HR-CLI
       win_shell: |
@@ -83,7 +83,7 @@
 
     - name: Configure DHCP Options for SVAL_LNZ-DEV-CLI
       win_shell: |
-        Set-DhcpServerv4OptionValue -ScopeId 10.1.0.0 -DnsServer 10.2.1.1 -Router 10.1.255.254
+        Set-DhcpServerv4OptionValue -ScopeId 10.1.0.0 -DnsServer 10.3.0.1,10.2.1.1 -Router 10.1.255.254
 
     - name: Add exclusion range for Gateway for SVAL_LNZ-DEV-CLI
       win_shell: |
