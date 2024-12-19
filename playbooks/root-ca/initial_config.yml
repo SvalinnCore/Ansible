@@ -1,5 +1,5 @@
 - name: Initial Configuration Root-CA
-  hosts: dc1
+  hosts: root-ca
   gather_facts: no
   tasks:
 
