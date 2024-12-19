@@ -33,3 +33,12 @@
 
   - name: Initial configuration for VIE-HR-CLI3
     import_playbook: vie-hr-cli3/initial_config.yml
+  
+  - name: Initial configuration for LNZ-DEV-CLI1
+  import_playbook: lnz-dev-cli1/initial_config.yml
+
+  - name: Initial configuration for LNZ-DEV-CLI2
+    import_playbook: lnz-dev-cli2/initial_config.yml
+
+  - name: Initial configuration for LNZ-DEV-CLI3
+    import_playbook: lnz-dev-cli3/initial_config.yml

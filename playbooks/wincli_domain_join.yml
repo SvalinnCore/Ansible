@@ -33,3 +33,12 @@
 
   - name: Domain join for VIE-HR-CLI3
     import_playbook: vie-hr-cli3/domain_join.yml
+
+  - name: Domain join for LNZ-DEV-CLI1
+    import_playbook: lnz-dev-cli1/domain_join.yml
+
+  - name: Domain join for LNZ-DEV-CLI2
+    import_playbook: lnz-dev-cli2/domain_join.yml
+
+  - name: Domain join for LNZ-DEV-CLI3
+    import_playbook: lnz-dev-cli3/domain_join.yml
