@@ -10,6 +10,9 @@ all:
           ansible_host: 10.3.0.1
         root-ca:
           ansible_host: 10.2.2.3
+        sub-ca:
+          ansible_host: 10.2.2.4
+
     wincli:
       hosts:
         vie-it-cli1:
