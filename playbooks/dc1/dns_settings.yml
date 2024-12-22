@@ -18,3 +18,7 @@
     - name: reverse dns scavaging/aging
       win_shell: |
         Set-DnsServerZoneAging -Name "0.1.2.10.in-addr.arpa" -Aging $True -NoRefreshInterval 7.00:00:00 -RefreshInterval 7.00:00:00
+    
+    - name: automatic scavaging
+      win_shell: |
+        Set-DnsServerScavenging -ScavengingInterval 7.00:00:00
