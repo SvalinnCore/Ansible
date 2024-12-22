@@ -5,12 +5,16 @@
 
     - name: create Reverse Lookup Zone 
       win_shell: |
-        Add-DnsServerPrimaryZone -NetworkId "10.2.1.0/29" -ZoneFile "1.2.10.in-addr.arpa.dns" -DynamicUpdate "Secure"
+        Add-DnsServerPrimaryZone -NetworkID "10.2.1.0/29" -ReplicationScope "Forest"
 
     - name: add DNS Forwarder
       win_shell: |
         Add-DnsServerForwarder -IPAddress "8.8.8.8","8.8.4.4"
 
-    - name: dns scavaging/aging
+    - name: primary dns scavaging/aging
       win_shell: |
         Set-DnsServerZoneAging -Name "SVAL.at" -Aging $True -NoRefreshInterval 7.00:00:00 -RefreshInterval 7.00:00:00
+    
+    - name: reverse dns scavaging/aging
+      win_shell: |
+        Set-DnsServerZoneAging -Name "0.1.2.10.in-addr.arpa" -Aging $True -NoRefreshInterval 7.00:00:00 -RefreshInterval 7.00:00:00
