@@ -142,11 +142,11 @@
         path: "E:/Firmendaten"
         name: $Firmendaten
         full: Authenticated Users
-        caching_mode: Programs
+        caching_mode: Manual
 
     - name: Share Userhome
       win_share:
         path: "E:/Userhome"
         name: $Userhome
         full: Authenticated Users
-        caching_mode: Manual
+        caching_mode: Programs
