@@ -1,0 +1,152 @@
+- name: Create Shared Directory Structure
+  hosts: dc2
+  gather_facts: no
+  tasks:
+
+    - name: Create main shared folders
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten"
+        - "E:/Userhome"
+
+    - name: Disable inheritance for main shared folders
+      win_acl_inheritance:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - "E:/Firmendaten"
+        - "E:/Userhome"
+
+    - name: Set permissions for SYSTEM on main shared folders
+      win_acl:
+        path: "{{ item }}"
+        user: SYSTEM
+        rights: FullControl
+        state: present
+        type: allow
+      loop:
+        - "E:/Firmendaten"
+        - "E:/Userhome"
+    
+    - name: Set permissions for CREATOR OWNER on main shared folders
+      win_acl:
+        path: "{{ item }}"
+        user: "CREATOR OWNER"
+        rights: FullControl
+        state: present
+        type: allow
+      loop:
+        - "E:/Firmendaten"
+        - "E:/Userhome"
+
+    - name: Create department folders in Firmendaten
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten/IT"
+        - "E:/Firmendaten/Sales"
+        - "E:/Firmendaten/HR"
+        - "E:/Firmendaten/Development"
+        - "E:/Firmendaten/Allgemein"
+
+    - name: Set permissions for read group on department folders
+      win_acl:
+        path: "{{ item.path }}"
+        user: "{{ item.read_group }}"
+        rights: ReadAndExecute
+        state: present
+        type: allow
+        inherit: ContainerInherit,ObjectInherit
+      loop:
+        - path: "E:/Firmendaten/IT"
+          read_group: DL_IT_R
+        - path: "E:/Firmendaten/Sales"
+          read_group: DL_Sales_R
+        - path: "E:/Firmendaten/HR"
+          read_group: DL_HR_R
+        - path: "E:/Firmendaten/Development"
+          read_group: DL_Development_R
+        - path: "E:/Firmendaten/Allgemein"
+          read_group: DL_Allgemein_R
+
+    - name: Set permissions for manage group on department folders
+      win_acl:
+        path: "{{ item.path }}"
+        user: "{{ item.manage_group }}"
+        rights: Modify
+        state: present
+        type: allow
+        inherit: ContainerInherit,ObjectInherit
+      loop:
+        - path: "E:/Firmendaten/IT"
+          manage_group: DL_IT_M
+        - path: "E:/Firmendaten/Sales"
+          manage_group: DL_Sales_M
+        - path: "E:/Firmendaten/HR"
+          manage_group: DL_HR_M
+        - path: "E:/Firmendaten/Development"
+          manage_group: DL_Development_M
+        - path: "E:/Firmendaten/Allgemein"
+          manage_group: DL_Allgemein_M
+
+    - name: Create IT subfolders
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten/IT/Dokumentation"
+        - "E:/Firmendaten/IT/Projekte"
+        - "E:/Firmendaten/IT/Software"
+
+    - name: Create Sales subfolders
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten/Sales/Rechnungen"
+        - "E:/Firmendaten/Sales/Kunden"
+        - "E:/Firmendaten/Sales/Präsentationen"
+
+    - name: Create HR subfolders
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten/HR/Mitarbeiterakten"
+        - "E:/Firmendaten/HR/Richtlinien"
+        - "E:/Firmendaten/HR/Rekrutierung"
+
+    - name: Create Development subfolders
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten/Development/Quellcode"
+        - "E:/Firmendaten/Development/Tests"
+        - "E:/Firmendaten/Development/Dokumentation"
+
+    - name: Create Allgemein subfolders
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "E:/Firmendaten/Allgemein/Vorlagen"
+        - "E:/Firmendaten/Allgemein/GeteilteDokumente"
+        - "E:/Firmendaten/Allgemein/Ankündigungen"
+    
+    - name: Share Firmendaten
+      win_share:
+        path: "E:/Firmendaten"
+        name: $Firmendaten
+        full: Authenticated Users
+        caching_mode: Programs
+
+    - name: Share Userhome
+      win_share:
+        path: "E:/Userhome"
+        name: $Userhome
+        full: Authenticated Users
+        caching_mode: Manual
