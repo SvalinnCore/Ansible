@@ -33,8 +33,19 @@
     - name: Set permissions for CREATOR OWNER on main shared folders
       win_acl:
         path: "{{ item }}"
-        user: "CREATOR OWNER"
+        user: CREATOR OWNER
         rights: FullControl
+        state: present
+        type: allow
+      loop:
+        - "E:/Firmendaten"
+        - "E:/Userhome"
+    
+    - name: Set permissions for Domain Users on main shared folders
+      win_acl:
+        path: "{{ item }}"
+        user: Domain Users
+        rights: ReadAndExecute
         state: present
         type: allow
       loop:
@@ -140,13 +151,13 @@
     - name: Share Firmendaten
       win_share:
         path: "E:/Firmendaten"
-        name: $Firmendaten
+        name: Firmendaten$
         full: Authenticated Users
         caching_mode: Manual
 
     - name: Share Userhome
       win_share:
         path: "E:/Userhome"
-        name: $Userhome
+        name: Userhome$
         full: Authenticated Users
         caching_mode: Programs
