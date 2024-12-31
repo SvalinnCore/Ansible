@@ -63,6 +63,17 @@
         - "E:/Firmendaten/Development"
         - "E:/Firmendaten/Allgemein"
 
+    - name: Disable inheritance for department folders in Firmendaten
+      win_acl_inheritance:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - "E:/Firmendaten/IT"
+        - "E:/Firmendaten/Sales"
+        - "E:/Firmendaten/HR"
+        - "E:/Firmendaten/Development"
+        - "E:/Firmendaten/Allgemein"
+
     - name: Set permissions for read group on department folders
       win_acl:
         path: "{{ item.path }}"
