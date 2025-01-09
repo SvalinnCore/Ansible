@@ -1,64 +1,26 @@
 - name: Set homeDirectory for Users via PowerShell
   hosts: dc2
   gather_facts: no
+  vars:
+    users:
+      - name: max.mueller
+      - name: lukas.schmidt
+      - name: jan.fischer
+      - name: anna.weber
+      - name: paul.meyer
+      - name: sarah.becker
+      - name: laura.wagner
+      - name: tim.schneider
+      - name: julia.hoffmann
+      - name: eva.bauer
+      - name: markus.schmidt
+      - name: lena.schulz
+      - name: simon.braun
+      - name: anna.richter
+      - name: tobias.zimmermann
+      
   tasks:
-
-    - name: Set homeDirectory for Max Müller
+    - name: Set homeDirectory for each user
       ansible.windows.win_shell: |
-        Set-ADUser -Identity max.mueller -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Lukas Schmidt
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity lukas.schmidt -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Jan Fischer
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity jan.fischer -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Anna Weber
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity anna.weber -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Paul Meyer
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity paul.meyer -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Sarah Becker
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity sarah.becker -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Laura Wagner
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity laura.wagner -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Tim Schneider
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity tim.schneider -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Julia Hoffmann
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity julia.hoffmann -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Eva Bauer
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity eva.bauer -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Markus Schmidt
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity markus.schmidt -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Lena Schulz
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity lena.schulz -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-
-    - name: Set homeDirectory for Simon Braun
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity simon.braun -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-        
-    - name: Set homeDirectory for Anna Richter
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity anna.richter -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
-    
-    - name: Set homeDirectory for Tobias Zimmermann
-      ansible.windows.win_shell: |
-        Set-ADUser -Identity tobias.zimmermann -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U: -Confirm
+        Set-ADUser -Identity {{ item.name }} -HomeDirectory "\\DC2\userhome$\{{ item.name }}" -HomeDrive U:
+      loop: "{{ users }}"
