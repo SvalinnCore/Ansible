@@ -2,6 +2,7 @@
   hosts: dc1
   gather_facts: no
   tasks:
+  
     - name: Create top-level OU - Wien
       microsoft.ad.ou:
         name: Wien
