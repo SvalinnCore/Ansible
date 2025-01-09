@@ -4,19 +4,19 @@
   tasks:
 
     - name: Create "Admins" Organizational Unit in Wien
-      win_ad_organizational_unit:
+      microsoft.ad.ou:
         name: Admins
         path: "OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create "Users" Organizational Unit in Admins
-      win_ad_organizational_unit:
+      microsoft.ad.ou:
         name: Users
         path: "OU=Admins,OU=Wien,DC=SVAL,DC=at"
         state: present
 
     - name: Create the JEA groups in Users OU
-      win_ad_group:
+      microsoft.ad.group:
         name: "{{ item }}"
         path: "OU=Users,DC=SVAL,DC=at"
         state: present
@@ -28,61 +28,85 @@
         - Backup Admins
 
     - name: Create User 'Paul Wagner'
-      win_user:
+      microsoft.ad.user:
         name: paul.wagner
+        firstname: Paul
+        surname: Wagner
         password: ServerAdmin@Paul2024!
+        password_never_expires: yes
         groups:
-          - Server Admins
-          - Domain Users
+          set:
+            - Server Admins
+            - Domain Users
         state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
 
     - name: Create User 'Sarah Müller'
-      win_user:
+      microsoft.ad.user:
         name: sarah.mueller
+        firstname: Sarah
+        surname: Müller
         password: UserAdmin@Sarah2024!
+        password_never_expires: yes
         groups:
-          - User Admins
-          - Domain Users
+          set:
+            - User Admins
+            - Domain Users
         state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
 
     - name: Create User 'Michael Bauer'
-      win_user:
+      microsoft.ad.user:
         name: michael.bauer
+        firstname: Michael
+        surname: Bauer
         password: NetworkAdmin@Michael2024!
+        password_never_expires: yes
         groups:
-          - Network Admins
-          - Domain Users
+          set:
+            - Network Admins
+            - Domain Users
         state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
 
     - name: Create User 'Eva Richter'
-      win_user:
+      microsoft.ad.user:
         name: eva.richter
+        firstname: Eva
+        surname: Richter
         password: Security@Eva2024!
+        password_never_expires: yes
         groups:
-          - Security Admins
-          - Domain Users
+          set:
+            - Security Admins
+            - Domain Users
         state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
 
     - name: Create User 'Tom Zimmermann'
-      win_user:
+      microsoft.ad.user:
         name: tom.zimmermann
+        firstname: Tom
+        surname: Zimmermann
         password: BackupAdmin@Tom2024!
+        password_never_expires: yes
         groups:
-          - Backup Admins
-          - Domain Users
+          set:
+            - Backup Admins
+            - Domain Users
         state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
 
     - name: Create User 'Monika König'
-      win_user:
+      microsoft.ad.user:
         name: monika.koenig
+        firstname: Monika
+        surname: König
         password: BackupAdmin@Monika2024!
+        password_never_expires: yes
         groups:
-          - Backup Admins
-          - Domain Users
+          set:
+            - Backup Admins
+            - Domain Users
         state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
