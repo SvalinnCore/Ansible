@@ -3,6 +3,12 @@
   gather_facts: no
   tasks:
 
+    - name: Install File Server Resource Manager
+      win_feature:
+        name:
+          - File Server Resource Manager
+        state: present
+
     - name: Create main shared folders
       win_file:
         path: "{{ item }}"
