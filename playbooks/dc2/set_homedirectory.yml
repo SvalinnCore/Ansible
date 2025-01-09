@@ -5,56 +5,60 @@
 
     - name: Set homeDirectory for Max Müller
       ansible.windows.win_shell: |
-        Set-ADUser -Identity max.mueller -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity max.mueller -HomeDirectory "\\DC2\userhome$\max.mueller" -HomeDrive U:
 
     - name: Set homeDirectory for Lukas Schmidt
       ansible.windows.win_shell: |
-        Set-ADUser -Identity lukas.schmidt -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity lukas.schmidt -HomeDirectory "\\DC2\userhome$\lukas.schmidt" -HomeDrive U:
 
     - name: Set homeDirectory for Jan Fischer
       ansible.windows.win_shell: |
-        Set-ADUser -Identity jan.fischer -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity jan.fischer -HomeDirectory "\\DC2\userhome$\jan.fischer" -HomeDrive U:
 
     - name: Set homeDirectory for Anna Weber
       ansible.windows.win_shell: |
-        Set-ADUser -Identity anna.weber -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity anna.weber -HomeDirectory "\\DC2\userhome$\anna.weber" -HomeDrive U:
 
     - name: Set homeDirectory for Paul Meyer
       ansible.windows.win_shell: |
-        Set-ADUser -Identity paul.meyer -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity paul.meyer -HomeDirectory "\\DC2\userhome$\paul.meyer" -HomeDrive U:
 
     - name: Set homeDirectory for Sarah Becker
       ansible.windows.win_shell: |
-        Set-ADUser -Identity sarah.becker -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity sarah.becker -HomeDirectory "\\DC2\userhome$\sarah.becker" -HomeDrive U:
 
     - name: Set homeDirectory for Laura Wagner
       ansible.windows.win_shell: |
-        Set-ADUser -Identity laura.wagner -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity laura.wagner -HomeDirectory "\\DC2\userhome$\laura.wagner" -HomeDrive U:
 
     - name: Set homeDirectory for Tim Schneider
       ansible.windows.win_shell: |
-        Set-ADUser -Identity tim.schneider -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity tim.schneider -HomeDirectory "\\DC2\userhome$\tim.schneider" -HomeDrive U:
 
     - name: Set homeDirectory for Julia Hoffmann
       ansible.windows.win_shell: |
-        Set-ADUser -Identity julia.hoffmann -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity julia.hoffmann -HomeDirectory "\\DC2\userhome$\julia.hoffmann" -HomeDrive U:
 
     - name: Set homeDirectory for Eva Bauer
       ansible.windows.win_shell: |
-        Set-ADUser -Identity eva.bauer -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity eva.bauer -HomeDirectory "\\DC2\userhome$\eva.bauer" -HomeDrive U:
 
     - name: Set homeDirectory for Markus Schmidt
       ansible.windows.win_shell: |
-        Set-ADUser -Identity markus.schmidt -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
-    
-    - name: Set homeDirectory for Anna Richter
+        Set-ADUser -Identity markus.schmidt -HomeDirectory "\\DC2\userhome$\markus.schmidt" -HomeDrive U:
+
+    - name: Set homeDirectory for Lena Schulz
       ansible.windows.win_shell: |
-        Set-ADUser -Identity anna.richter -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
-    
+        Set-ADUser -Identity lena.schulz -HomeDirectory "\\DC2\userhome$\lena.schulz" -HomeDrive U:
+
     - name: Set homeDirectory for Simon Braun
       ansible.windows.win_shell: |
-        Set-ADUser -Identity simon.braun -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity simon.braun -HomeDirectory "\\DC2\userhome$\simon.braun" -HomeDrive U:
+        
+    - name: Set homeDirectory for Anna Richter
+      ansible.windows.win_shell: |
+        Set-ADUser -Identity anna.richter -HomeDirectory "\\DC2\userhome$\anna.richter" -HomeDrive U:
     
     - name: Set homeDirectory for Tobias Zimmermann
       ansible.windows.win_shell: |
-        Set-ADUser -Identity tobias.zimmermann -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+        Set-ADUser -Identity tobias.zimmermann -HomeDirectory "\\DC2\userhome$\tobias.zimmermann" -HomeDrive U:
