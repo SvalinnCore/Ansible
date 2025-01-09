@@ -46,3 +46,15 @@
     - name: Set homeDirectory for Markus Schmidt
       ansible.windows.win_shell: |
         Set-ADUser -Identity markus.schmidt -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+    
+    - name: Set homeDirectory for Anna Richter
+      ansible.windows.win_shell: |
+        Set-ADUser -Identity anna.richter -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+    
+    - name: Set homeDirectory for Simon Braun
+      ansible.windows.win_shell: |
+        Set-ADUser -Identity simon.braun -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
+    
+    - name: Set homeDirectory for Tobias Zimmermann
+      ansible.windows.win_shell: |
+        Set-ADUser -Identity tobias.zimmermann -HomeDirectory "\\DC2\userhome$\%username%" -HomeDrive U:
