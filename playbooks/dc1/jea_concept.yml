@@ -38,8 +38,8 @@
           set:
             - Server Admins
             - Domain Users
-        state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
+        state: present
 
     - name: Create User 'Sarah Müller'
       microsoft.ad.user:
@@ -52,8 +52,8 @@
           set:
             - User Admins
             - Domain Users
-        state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
+        state: present
 
     - name: Create User 'Michael Bauer'
       microsoft.ad.user:
@@ -66,8 +66,8 @@
           set:
             - Network Admins
             - Domain Users
-        state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
+        state: present
 
     - name: Create User 'Eva Richter'
       microsoft.ad.user:
@@ -80,8 +80,8 @@
           set:
             - Security Admins
             - Domain Users
-        state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
+        state: present
 
     - name: Create User 'Tom Zimmermann'
       microsoft.ad.user:
@@ -94,8 +94,8 @@
           set:
             - Backup Admins
             - Domain Users
-        state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
+        state: present
 
     - name: Create User 'Monika König'
       microsoft.ad.user:
@@ -108,5 +108,5 @@
           set:
             - Backup Admins
             - Domain Users
-        state: present
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
+        state: present
