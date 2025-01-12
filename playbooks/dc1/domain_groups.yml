@@ -7,26 +7,26 @@
       microsoft.ad.group:
         name: G_IT
         description: "Group for IT Department"
-        scope: Global
+        scope: global
         state: present
 
     - name: Create Sales Group
       microsoft.ad.group:
         name: G_Sales
         description: "Group for Sales Department"
-        scope: Global
+        scope: global
         state: present
 
     - name: Create HR Group
       microsoft.ad.group:
         name: G_HR
         description: "Group for HR Department"
-        scope: Global
+        scope: global
         state: present
     
     - name: Create Development Group
       microsoft.ad.group:
         name: G_Development
         description: "Group for Development Department"
-        scope: Global
+        scope: global
         state: present
