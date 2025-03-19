@@ -29,8 +29,7 @@
     
     - name: Add exclusion range for Gateway and SVI for SVAL_VIE-Sales-CLI
       win_shell: |
-        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.4.0 -StartRange 10.0.4.254 -EndRange 10.0.4.254
-        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.4.0 -StartRange 10.0.4.100 -EndRange 10.0.4.100
+        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.4.0 -StartRange 10.0.4.7 -EndRange 10.0.4.254
 
     - name: Add static leases for SVAL_VIE-IT-CLI
       win_shell: |
@@ -51,7 +50,7 @@
 
     - name: Add exclusion range for Gateway for SVAL_VIE-Sales-CLI
       win_shell: |
-        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.1.0 -StartRange 10.0.1.254 -EndRange 10.0.1.254
+        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.1.0 -StartRange 10.0.1.4 -EndRange 10.0.1.254
 
     - name: Add static leases for SVAL_VIE-Sales-CLI
       win_shell: |
@@ -69,7 +68,7 @@
 
     - name: Add exclusion range for Gateway for SVAL_VIE-HR-CLI
       win_shell: |
-        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.2.0 -StartRange 10.0.2.254 -EndRange 10.0.2.254
+        Add-DhcpServerv4ExclusionRange -ScopeId 10.0.2.0 -StartRange 10.0.2.4 -EndRange 10.0.2.254
 
     - name: Add static leases for SVAL_VIE-HR-CLI
       win_shell: |
@@ -87,7 +86,7 @@
 
     - name: Add exclusion range for Gateway for SVAL_LNZ-DEV-CLI
       win_shell: |
-        Add-DhcpServerv4ExclusionRange -ScopeId 10.1.0.0 -StartRange 10.1.255.254 -EndRange 10.1.255.254
+        Add-DhcpServerv4ExclusionRange -ScopeId 10.1.0.0 -StartRange 10.1.0.4 -EndRange 10.1.255.254
 
     - name: Add static leases for SVAL_LNZ-DEV-CLI
       win_shell: |
