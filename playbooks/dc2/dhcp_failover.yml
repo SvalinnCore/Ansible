@@ -1,0 +1,37 @@
+
+- name: Install and configure DHCP Server failover
+  hosts: dc2
+  gather_facts: no
+  tasks:
+
+    - name: Install DHCP Server role
+      win_feature:
+        name:
+          - DHCP
+        state: present
+
+    - name: Install RSAT for DHCP
+      win_feature:
+        name:
+          - RSAT-DHCP
+        state: present
+
+    - name: Authorize DHCP Server in AD
+      win_shell: |
+        Add-DhcpServerInDC -DnsName DC2.SVAL.at -IPAddress 10.2.1.2
+
+    - name: DHCP Failover for SVAL_VIE-Sales-CLI
+      win_shell: |
+        Add-DhcpServerv4Failover -ComputerName "DC1.SVAL.at" -Name "Failover-SVAL_VIE-Sales-CLI" -PartnerServer "DC2.SVAL.at" -ScopeId 10.0.1.0 -LoadBalancePercent 50 -MaxClientLeadTime 2:00:00 -AutoStateTransition $True -StateSwitchInterval 2:00:00
+
+    - name: DHCP Failover for SVAL_VIE-HR-CLI
+      win_shell: |
+        Add-DhcpServerv4Failover -ComputerName "DC1.SVAL.at" -Name "Failover-SVAL_VIE-HR-CLI" -PartnerServer "DC2.SVAL.at" -ScopeId 10.0.2.0 -LoadBalancePercent 50 -MaxClientLeadTime 2:00:00 -AutoStateTransition $True -StateSwitchInterval 2:00:00
+
+    - name: DHCP Failover for SVAL_VIE-IT-CLI
+      win_shell: |
+        Add-DhcpServerv4Failover -ComputerName "DC1.SVAL.at" -Name "Failover-SVAL_VIE-IT-CLI" -PartnerServer "DC2.SVAL.at" -ScopeId 10.0.4.0 -LoadBalancePercent 50 -MaxClientLeadTime 2:00:00 -AutoStateTransition $True -StateSwitchInterval 2:00:00
+
+    - name: DHCP Failover for SVAL_LNZ-DEV-CLI
+      win_shell: |
+        Add-DhcpServerv4Failover -ComputerName "DC1.SVAL.at" -Name "Failover-SVAL_LNZ-DEV-CLI" -PartnerServer "DC2.SVAL.at" -ScopeId 10.1.0.0 -LoadBalancePercent 50 -MaxClientLeadTime 2:00:00 -AutoStateTrashsition $True -StateSwitchInterval 2:00:00
