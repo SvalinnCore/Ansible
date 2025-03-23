@@ -96,17 +96,3 @@
             - Domain Users
         path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
         state: present
-
-    - name: Create User 'Monika König'
-      microsoft.ad.user:
-        name: monika.koenig
-        firstname: Monika
-        surname: König
-        password: BackupAdmin@Monika2024!
-        password_never_expires: yes
-        groups:
-          set:
-            - Backup Admins
-            - Domain Users
-        path: "OU=Users,OU=Admins,OU=Wien,DC=SVAL,DC=at"
-        state: present
