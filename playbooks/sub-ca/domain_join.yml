@@ -1,0 +1,13 @@
+- name: join sub-ca to domain
+  hosts: sub-ca
+  gather_facts: false
+  tasks:
+
+    - name: join host to SVAL.at with automatic reboot
+      microsoft.ad.membership:
+        dns_domain_name: SVAL.at
+        domain_admin_user: admin@SVAL.at
+        domain_admin_password: Ganzgeheim123!
+        domain_ou_path: "OU=AuthServ,OU=Wien,DC=SVAL,DC=at"
+        state: domain
+        reboot: true
