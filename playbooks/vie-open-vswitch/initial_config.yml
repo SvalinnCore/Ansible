@@ -1,5 +1,5 @@
 ---
-- name: Konfiguriere persistente IP-Adresse auf einem Linux-Client
+- name: Grundkonfiguration Open vSwitch
   hosts: vie-open-vswitch
   become: yes  # Damit werden root-Rechte verwendet
   vars_prompt:
